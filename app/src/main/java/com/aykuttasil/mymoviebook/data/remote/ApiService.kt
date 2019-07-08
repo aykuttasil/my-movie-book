@@ -1,11 +1,18 @@
 package com.aykuttasil.mymoviebook.data.remote
 
-import androidx.lifecycle.LiveData
+import com.aykuttasil.mymoviebook.data.entity.User
+import com.aykuttasil.mymoviebook.data.remote.model.MovieResponse
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("user")
-    fun getUser(): LiveData<ApiResponse<String>>
+    @GET("users")
+    suspend fun getUser(): List<User>
+
+    @GET("movie/popular")
+    suspend fun getPopularMovies(
+        @Query("page") page: Int = 1
+    ): MovieResponse
 
 }

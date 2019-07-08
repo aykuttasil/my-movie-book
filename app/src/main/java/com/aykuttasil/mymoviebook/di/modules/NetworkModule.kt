@@ -15,16 +15,22 @@ import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+
 @Module(includes = [ApiModule::class])
 class NetworkModule {
 
-    private fun getBaseUrl() = "https://api.github.com"
+    //private fun getBaseUrl() = "https://5cb987b0f841d2001455e48e.mockapi.io/api/"
+
+    private val baseUrl = "https://api.themoviedb.org/3/"
+    private val apiKey = "416f290cfb691748e9a1f4eaff006117"
+    private val accessToken =
+        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MTZmMjkwY2ZiNjkxNzQ4ZTlhMWY0ZWFmZjAwNjExNyIsInN1YiI6IjU3Y2I1MTFiOTI1MTQxMzU3ZDAwNWY4OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.e6L5gGl-GUBrVh3eTwQ2X2xcaxG-Z69k2r4zMNulklA"
 
     @Provides
     @Singleton
     internal fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(getBaseUrl())
+            .baseUrl(baseUrl)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -40,10 +46,16 @@ class NetworkModule {
         val httpClientBuilder = OkHttpClient.Builder()
             .addInterceptor { chain ->
                 val original = chain.request()
+                val originalHttpUrl = original.url()
+
+                val url = originalHttpUrl.newBuilder()
+                    .addQueryParameter("api_key", apiKey)
+                    .addQueryParameter("language", "tr")
+                    .build()
 
                 val request = original.newBuilder()
                     .addHeader("Content-Type", "application/json")
-                    .method(original.method(), original.body())
+                    .url(url)
                     .build()
 
                 return@addInterceptor chain.proceed(request)

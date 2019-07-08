@@ -2,6 +2,7 @@ package com.aykuttasil.mymoviebook.di
 
 import android.app.Application
 import com.aykuttasil.mymoviebook.App
+import com.aykuttasil.mymoviebook.di.modules.AppModule
 import com.aykuttasil.mymoviebook.di.modules.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
@@ -13,6 +14,7 @@ import javax.inject.Singleton
 @Component(
     modules = [
         (AndroidSupportInjectionModule::class),
+        (AppModule::class),
         (ActivityBuilder::class),
         (NetworkModule::class)
     ]

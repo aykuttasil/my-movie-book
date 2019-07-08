@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import com.aykuttasil.mymoviebook.R
 import com.aykuttasil.mymoviebook.ui.activity.BaseActivity
-import com.aykuttasil.mymoviebook.ui.activity.MainActivity
+import com.aykuttasil.mymoviebook.ui.activity.main.MainActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
