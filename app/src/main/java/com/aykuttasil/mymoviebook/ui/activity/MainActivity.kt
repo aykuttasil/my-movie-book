@@ -1,9 +1,10 @@
-package com.aykuttasil.mymoviebook
+package com.aykuttasil.mymoviebook.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.aykuttasil.mymoviebook.R
+import com.aykuttasil.mymoviebook.ui.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
