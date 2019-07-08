@@ -1,6 +1,7 @@
 package com.aykuttasil.mymoviebook.di.modules
 
 import com.aykuttasil.mymoviebook.BuildConfig
+import com.aykuttasil.mymoviebook.util.LiveDataCallAdapterFactory
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -27,7 +28,7 @@ class NetworkModule {
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            // .addCallAdapterFactory(LiveDataCallAdapterFactory())
+            .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .build()
     }
 
