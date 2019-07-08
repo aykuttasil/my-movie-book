@@ -2,7 +2,6 @@ package com.aykuttasil.mymoviebook.ui.activity
 
 import android.os.Bundle
 import com.aykuttasil.mymoviebook.R
-import com.aykuttasil.mymoviebook.ui.BaseActivity
 
 class MainActivity : BaseActivity() {
 

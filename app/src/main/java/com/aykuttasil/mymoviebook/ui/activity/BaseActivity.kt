@@ -1,4 +1,4 @@
-package com.aykuttasil.mymoviebook.ui
+package com.aykuttasil.mymoviebook.ui.activity
 
 import dagger.android.support.DaggerAppCompatActivity
 

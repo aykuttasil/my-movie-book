@@ -61,11 +61,14 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit_converter_gson"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit_adapter_rxjava2"
+    implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttp3_logging"
 
     implementation "com.google.dagger:dagger:$versions.dagger"
     kapt "com.google.dagger:dagger-compiler:$versions.dagger"
     implementation "com.google.dagger:dagger-android-support:$versions.dagger"
     kapt "com.google.dagger:dagger-android-processor:$versions.dagger"
+
+    implementation "com.jakewharton.timber:timber:$versions.timber"
 
     testImplementation "junit:junit:$versions.junit"
 
