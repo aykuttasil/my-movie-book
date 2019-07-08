@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs"
+
+apply from: "$project.rootDir/dependencies.gradle"
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+    buildToolsVersion "29.0.0"
+
+    defaultConfig {
+        applicationId "com.aykuttasil.mymoviebook"
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            applicationIdSuffix ".debug"
+            versionNameSuffix '-DEBUG'
+        }
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
+
+    implementation "androidx.appcompat:appcompat:$versions.androidx.appcompat"
+    implementation "androidx.core:core-ktx:$versions.androidx.core_ktx"
+    implementation "androidx.constraintlayout:constraintlayout:$versions.androidx.constraint_layout"
+    implementation "com.google.android.material:material:$versions.material_design"
+
+    testImplementation "junit:junit:$versions.junit"
+
+    androidTestImplementation "androidx.test.ext:junit:$versions.androidx.test_ext_junit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$versions.androidx.espresso_core"
+}
