@@ -1,12 +1,13 @@
 package com.aykuttasil.mymoviebook.ui.activity.main
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.aykuttasil.mymoviebook.R
 import com.aykuttasil.mymoviebook.di.ViewModelFactory
 import com.aykuttasil.mymoviebook.ui.activity.BaseActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
@@ -20,6 +21,14 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        NavigationUI.setupWithNavController(
+            bottomNavigationView,
+            findNavController(R.id.fragmentHost)
+        )
+
+        NavigationUI.setupWithNavController(toolbar, findNavController(R.id.fragmentHost))
+
+        /*
         viewModel.liveMovies.observe(this, Observer { movieList ->
             movieList.forEach { movie ->
                 println(movie.title)
@@ -31,5 +40,7 @@ class MainActivity : BaseActivity() {
         })
 
         viewModel.getPopularMovies()
+
+         */
     }
 }
