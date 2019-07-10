@@ -1,12 +1,12 @@
 package com.aykuttasil.mymoviebook.data.repository
 
 import com.aykuttasil.mymoviebook.data.remote.ApiService
-import com.aykuttasil.mymoviebook.data.remote.model.MovieResponse
+import com.aykuttasil.mymoviebook.data.remote.model.MovieListResponse
 import javax.inject.Inject
 
 class MovieRepository @Inject constructor(private val apiService: ApiService) {
 
-    suspend fun getPopularMovies(page: Int): MovieResponse {
+    suspend fun getPopularMovies(page: Int): MovieListResponse {
         return apiService.getPopularMovies(page)
     }
 }
