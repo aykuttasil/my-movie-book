@@ -29,6 +29,7 @@ class UpcomingMoviesFragment : BaseFragment() {
     ): View? {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_upcomingmovies, container, false)
+        binding.lifecycleOwner = this
         return binding.root
     }
 }

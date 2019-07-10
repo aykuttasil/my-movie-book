@@ -29,6 +29,7 @@ class NowPlayingMoviesFragment : BaseFragment() {
     ): View? {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_nowplayingmovies, container, false)
+        binding.lifecycleOwner = this
         return binding.root
     }
 }
