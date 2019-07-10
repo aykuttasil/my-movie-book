@@ -6,119 +6,134 @@ import com.google.gson.annotations.SerializedName
 data class Movie(
     @SerializedName("adult")
     @Expose
-    var adult: Boolean?,
+    var adult: Boolean? = null,
     @SerializedName("backdrop_path")
     @Expose
-    var backdropPath: String?,
+    var backdropPath: String? = null,
     @SerializedName("belongs_to_collection")
     @Expose
-    var belongsToCollection: Any?,
+    var belongsToCollection: BelongsToCollection? = null,
     @SerializedName("budget")
     @Expose
-    var budget: Int?,
+    var budget: Int? = null,
     @SerializedName("genres")
     @Expose
-    var genres: List<Genre?>?,
+    var genres: List<Genre?>? = null,
     @SerializedName("homepage")
     @Expose
-    var homepage: String?,
+    var homepage: String? = null,
     @SerializedName("id")
     @Expose
-    var id: Int?,
+    var id: Int? = null,
     @SerializedName("imdb_id")
     @Expose
-    var imdbId: String?,
+    var imdbId: String? = null,
     @SerializedName("original_language")
     @Expose
-    var originalLanguage: String?,
+    var originalLanguage: String? = null,
     @SerializedName("original_title")
     @Expose
-    var originalTitle: String?,
+    var originalTitle: String? = null,
     @SerializedName("overview")
     @Expose
-    var overview: String?,
+    var overview: String? = null,
     @SerializedName("popularity")
     @Expose
-    var popularity: Double?,
+    var popularity: Double? = null,
     @SerializedName("poster_path")
     @Expose
-    var posterPath: String?,
+    var posterPath: String? = null,
     @SerializedName("production_companies")
     @Expose
-    var productionCompanies: List<ProductionCompany?>?,
+    var productionCompanies: List<ProductionCompany>? = null,
     @SerializedName("production_countries")
     @Expose
-    var productionCountries: List<ProductionCountry?>?,
+    var productionCountries: List<ProductionCountry>? = null,
     @SerializedName("release_date")
     @Expose
-    var releaseDate: String?,
+    var releaseDate: String? = null,
     @SerializedName("revenue")
     @Expose
-    var revenue: Int?,
+    var revenue: Int? = null,
     @SerializedName("runtime")
     @Expose
-    var runtime: Int?,
+    var runtime: Int? = null,
     @SerializedName("spoken_languages")
     @Expose
-    var spokenLanguages: List<SpokenLanguage?>?,
+    var spokenLanguages: List<SpokenLanguage>? = null,
     @SerializedName("status")
     @Expose
-    var status: String?,
+    var status: String? = null,
     @SerializedName("tagline")
     @Expose
-    var tagline: String?,
+    var tagline: String? = null,
     @SerializedName("title")
     @Expose
-    var title: String?,
+    var title: String? = null,
     @SerializedName("video")
     @Expose
-    var video: Boolean?,
+    var video: Boolean? = null,
     @SerializedName("vote_average")
     @Expose
-    var voteAverage: Double?,
+    var voteAverage: Double? = null,
     @SerializedName("vote_count")
     @Expose
-    var voteCount: Int?
-)
-
-data class ProductionCompany(
-    @SerializedName("id")
-    @Expose
-    var id: Int?,
-    @SerializedName("logo_path")
-    @Expose
-    var logoPath: String?,
-    @SerializedName("name")
-    @Expose
-    var name: String?,
-    @SerializedName("origin_country")
-    @Expose
-    var originCountry: String?
-)
-
-data class Genre(
-    @SerializedName("id")
-    @Expose
-    var id: Int?,
-    @SerializedName("name")
-    @Expose
-    var name: String?
+    var voteCount: Int? = null
 )
 
 data class ProductionCountry(
     @SerializedName("iso_3166_1")
     @Expose
-    var iso31661: String?,
+    var iso31661: String? = null,
     @SerializedName("name")
     @Expose
-    var name: String?
+    var name: String? = null
+)
+
+data class ProductionCompany(
+    @SerializedName("id")
+    @Expose
+    var id: Int? = null,
+    @SerializedName("logo_path")
+    @Expose
+    var logoPath: String? = null,
+    @SerializedName("name")
+    @Expose
+    var name: String? = null,
+    @SerializedName("origin_country")
+    @Expose
+    var originCountry: String? = null
+)
+
+data class BelongsToCollection(
+    @SerializedName("backdrop_path")
+    @Expose
+    var backdropPath: String? = null,
+    @SerializedName("id")
+    @Expose
+    var id: Int? = null,
+    @SerializedName("name")
+    @Expose
+    var name: String? = null,
+    @SerializedName("poster_path")
+    @Expose
+    var posterPath: String? = null
+)
+
+data class Genre(
+    @SerializedName("id")
+    @Expose
+    var id: Int? = null,
+    @SerializedName("name")
+    @Expose
+    var name: String? = null
 )
 
 data class SpokenLanguage(
     @SerializedName("iso_639_1")
     @Expose
-    var iso6391: String?,
+    var iso6391: String? = null,
     @SerializedName("name")
     @Expose
-    var name: String?
+    var name: String? = null
 )
