@@ -53,14 +53,6 @@ class MovieDetailDialog(val movie: Movie) : DialogFragment() {
         binding.closeImageview.setOnClickListener {
             dismiss()
         }
-        /*
-        binding.toolbar.apply {
-            setNavigationIcon(R.drawable.ic_movie_filter_black_24dp)
-            setNavigationOnClickListener {
-                dismiss()
-            }
-        }
-        */
     }
 
     override fun onStart() {

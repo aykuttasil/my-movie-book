@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.aykuttasil.mymoviebook.ui.dialog.MovieDetailViewModel" />
@@ -14,23 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorWhite">
-
-        <!--
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:elevation="0dp">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
-                app:title="@{viewModel.liveMovie.title}"
-                tools:title="@tools:sample/lorem/random" />
-
-        </com.google.android.material.appbar.AppBarLayout>
-        -->
 
         <FrameLayout
             android:layout_width="match_parent"
