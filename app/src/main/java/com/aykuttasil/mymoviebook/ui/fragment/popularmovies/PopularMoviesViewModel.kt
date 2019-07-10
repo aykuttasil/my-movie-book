@@ -69,7 +69,7 @@ class PopularMoviesViewModel @Inject constructor(
                 }
             } catch (ex: Exception) {
                 ex.printStackTrace()
-                liveSnackbar.value = ex.message ?: ex.toString()
+                liveSnackbar.value = ex.message ?: ""
             }
         }
     }
