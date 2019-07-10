@@ -18,4 +18,19 @@
         android:id="@+id/upcomingMoviesFragment"
         android:name="com.aykuttasil.mymoviebook.ui.fragment.upcomingmovies.UpcomingMoviesFragment"
         android:label="Upcoming Movies" />
+
+    <!--<fragment
+        android:id="@+id/movieDetailDialog"
+        android:name="com.aykuttasil.mymoviebook.ui.dialog.MovieDetailDialog"
+        android:label="Movie Detail" />-->
+
+    <dialog
+        android:id="@+id/movieDetailDialog"
+        android:name="com.aykuttasil.mymoviebook.ui.dialog.MovieDetailDialog" />
+
+    <action
+        android:id="@+id/action_global_movieDetailDialog"
+        app:destination="@id/movieDetailDialog"
+        app:launchSingleTop="true" />
+
 </navigation>
