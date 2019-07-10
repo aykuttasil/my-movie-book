@@ -27,20 +27,5 @@ class MainActivity : BaseActivity() {
         )
 
         NavigationUI.setupWithNavController(toolbar, findNavController(R.id.fragmentHost))
-
-        /*
-        viewModel.liveMovies.observe(this, Observer { movieList ->
-            movieList.forEach { movie ->
-                println(movie.title)
-            }
-        })
-
-        viewModel.liveSnackbar.observe(this, Observer {
-            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
-        })
-
-        viewModel.getPopularMovies()
-
-         */
     }
 }
