@@ -1,6 +1,7 @@
 package com.aykuttasil.mymoviebook.di
 
 import com.aykuttasil.mymoviebook.di.scopes.PerFragment
+import com.aykuttasil.mymoviebook.ui.dialog.MovieDetailDialog
 import com.aykuttasil.mymoviebook.ui.fragment.nowplayingmovies.NowPlayingMoviesFragment
 import com.aykuttasil.mymoviebook.ui.fragment.popularmovies.PopularMoviesFragment
 import com.aykuttasil.mymoviebook.ui.fragment.upcomingmovies.UpcomingMoviesFragment
@@ -21,5 +22,10 @@ abstract class FragmentBuilder {
     @PerFragment
     @ContributesAndroidInjector
     abstract fun bindNowPlayingMoviesFragment(): NowPlayingMoviesFragment
+
+    @PerFragment
+    @ContributesAndroidInjector
+    abstract fun bindMovieDetailDialog(): MovieDetailDialog
+
 
 }

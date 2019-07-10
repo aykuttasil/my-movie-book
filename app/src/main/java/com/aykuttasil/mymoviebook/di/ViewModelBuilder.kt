@@ -3,6 +3,7 @@ package com.aykuttasil.mymoviebook.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.aykuttasil.mymoviebook.ui.activity.main.MainViewModel
+import com.aykuttasil.mymoviebook.ui.dialog.MovieDetailViewModel
 import com.aykuttasil.mymoviebook.ui.fragment.nowplayingmovies.NowPlayingMoviesViewModel
 import com.aykuttasil.mymoviebook.ui.fragment.popularmovies.PopularMoviesViewModel
 import com.aykuttasil.mymoviebook.ui.fragment.upcomingmovies.UpcomingMoviesViewModel
@@ -32,6 +33,11 @@ internal abstract class ViewModelBuilder {
     @Binds
     @ViewModelKey(NowPlayingMoviesViewModel::class)
     abstract fun provideNowPlayingMoviesViewModel(viewModel: NowPlayingMoviesViewModel): ViewModel
+
+    @IntoMap
+    @Binds
+    @ViewModelKey(MovieDetailViewModel::class)
+    abstract fun provideMovieDetailViewModel(viewModel: MovieDetailViewModel): ViewModel
 
     @Binds
     abstract fun provideViewModelFactory(viewModelFactory: ViewModelFactory): ViewModelProvider.Factory
