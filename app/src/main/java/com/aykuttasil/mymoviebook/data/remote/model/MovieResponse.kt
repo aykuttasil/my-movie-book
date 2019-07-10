@@ -29,7 +29,7 @@ data class Result(
     var backdropPath: String?,
     @SerializedName("genre_ids")
     @Expose
-    var genreIds: List<Int?>?,
+    var genreIds: List<Int>?,
     @SerializedName("id")
     @Expose
     var id: Int?,

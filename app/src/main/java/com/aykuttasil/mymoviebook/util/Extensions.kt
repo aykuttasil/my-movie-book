@@ -246,14 +246,14 @@ fun Fragment.NOT_IMPL(message: String = "This action is not implemented yet!") {
  * Extension method used to display a [Toast] message to the user.
  */
 fun Fragment.TOAST(message: String, duration: Int = Toast.LENGTH_SHORT) {
-    Toast.makeText(context, message, duration).show()
+    Toast.makeText(requireContext(), message, duration).show()
 }
 
 /**
  * Extension method used to display a [Toast] message to the user.
  */
 fun Fragment.TOAST(messageResId: Int, duration: Int = Toast.LENGTH_SHORT) {
-    Toast.makeText(context, messageResId, duration).show()
+    Toast.makeText(requireContext(), messageResId, duration).show()
 }
 
 /**
