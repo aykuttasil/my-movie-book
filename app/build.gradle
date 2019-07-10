@@ -19,6 +19,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storePassword 'moviebook123.'
+            keyAlias = 'MovieBook'
+            keyPassword 'moviebook123.'
+            storeFile file('release_keystore')
+        }
+    }
+
     buildTypes {
         debug {
             minifyEnabled false
@@ -29,6 +38,7 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
