@@ -33,11 +33,6 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-fun Activity.hideKeyboard() {
-    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    imm.hideSoftInputFromWindow(window.decorView.windowToken, 0)
-}
-
 /**
  * Extension method to remove the required boilerplate for running code after a view has been
  * inflated and measured.
@@ -117,8 +112,7 @@ fun View.showKeyboard() {
 fun Activity.hideSoftKeyboard() {
     if (currentFocus != null) {
         val inputMethodManager = getSystemService(
-            Context
-                .INPUT_METHOD_SERVICE
+            Context.INPUT_METHOD_SERVICE
         ) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
     }
@@ -137,6 +131,11 @@ fun Fragment.hideSoftKeyboard() {
 fun View.hideKeyboard() {
     val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(windowToken, 0)
+}
+
+fun Activity.hideKeyboard() {
+    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(window.decorView.windowToken, 0)
 }
 
 /**
@@ -259,19 +258,19 @@ fun Fragment.TOAST(messageResId: Int, duration: Int = Toast.LENGTH_SHORT) {
 /**
  * Extension method use to display a [Snackbar] message to the user.
  */
-fun View.displaySnakbar(message: String, duration: Int = Snackbar.LENGTH_SHORT): Snackbar {
-    val snakbar = Snackbar.make(this, message, duration)
-    snakbar.show()
-    return snakbar
+fun View.displaySnackbar(message: String, duration: Int = Snackbar.LENGTH_SHORT): Snackbar {
+    val snackbar = Snackbar.make(this, message, duration)
+    snackbar.show()
+    return snackbar
 }
 
 /**
  * Extension method use to display a [Snackbar] message to the user.
  */
-fun View.displaySnakbar(messageResId: Int, duration: Int = Snackbar.LENGTH_SHORT): Snackbar {
-    val snakbar = Snackbar.make(this, messageResId, duration)
-    snakbar.show()
-    return snakbar
+fun View.displaySnackbar(messageResId: Int, duration: Int = Snackbar.LENGTH_SHORT): Snackbar {
+    val snackbar = Snackbar.make(this, messageResId, duration)
+    snackbar.show()
+    return snackbar
 }
 
 /**
