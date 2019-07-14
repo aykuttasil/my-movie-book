@@ -14,7 +14,6 @@ import com.aykuttasil.mymoviebook.di.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
-
 class MovieDetailDialog(val movie: Movie) : DialogFragment() {
 
     @Inject
@@ -41,8 +40,11 @@ class MovieDetailDialog(val movie: Movie) : DialogFragment() {
             container,
             false
         )
-        binding.lifecycleOwner = this
-        binding.viewModel = viewModel
+        binding.run {
+            lifecycleOwner = this@MovieDetailDialog
+            viewModel = viewModel
+        }
+
         return binding.root
     }
 
