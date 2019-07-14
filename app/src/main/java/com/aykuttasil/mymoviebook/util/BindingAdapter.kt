@@ -18,7 +18,7 @@ fun <T> recyclerViewDataListBinding(recyclerView: RecyclerView, list: DataHolder
     }
 }
 
-@BindingAdapter("visibleGone")
+@BindingAdapter("visibleIf")
 fun viewVisibleBinding(view: View, isVisible: Boolean) {
     if (isVisible) view.visibility = View.VISIBLE
     else view.visibility = View.GONE
