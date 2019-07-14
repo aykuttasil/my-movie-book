@@ -14,7 +14,7 @@ import com.aykuttasil.mymoviebook.ui.fragment.BaseFragment
 import com.aykuttasil.mymoviebook.util.EndlessRecyclerOnScrollListener
 import com.aykuttasil.mymoviebook.util.IMovieClickListener
 import com.aykuttasil.mymoviebook.util.MovieAdapter
-import com.aykuttasil.mymoviebook.util.displaySnakbar
+import com.aykuttasil.mymoviebook.util.displaySnackbar
 import kotlinx.android.synthetic.main.fragment_popularmovies.*
 import timber.log.Timber
 import javax.inject.Inject
@@ -23,8 +23,7 @@ class PopularMoviesFragment : BaseFragment(), IMovieClickListener {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-
-    val viewModel by activityViewModels<PopularMoviesViewModel> { viewModelFactory }
+    private val _viewModel by activityViewModels<PopularMoviesViewModel> { viewModelFactory }
 
     lateinit var binding: FragmentPopularmoviesBinding
 
@@ -35,9 +34,10 @@ class PopularMoviesFragment : BaseFragment(), IMovieClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentPopularmoviesBinding.inflate(inflater)
-        binding.lifecycleOwner = this
-        binding.viewModel = viewModel
+        binding = FragmentPopularmoviesBinding.inflate(inflater).apply {
+            lifecycleOwner = this@PopularMoviesFragment
+            viewModel = _viewModel
+        }
         return binding.root
     }
 
@@ -48,9 +48,8 @@ class PopularMoviesFragment : BaseFragment(), IMovieClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        viewModel.liveSnackbar.observe(this, Observer {
-            requireView().displaySnakbar(it)
+        _viewModel.liveSnackbar.observe(this, Observer {
+            requireView().displaySnackbar(it)
         })
     }
 
@@ -62,7 +61,7 @@ class PopularMoviesFragment : BaseFragment(), IMovieClickListener {
     private val recyclerViewOnScrollListener = object : EndlessRecyclerOnScrollListener() {
         override fun onLoadMore() {
             Timber.d("onLoadMore")
-            viewModel.getPopularMoviesByPagination()
+            _viewModel.getPopularMoviesByPagination()
         }
     }
 

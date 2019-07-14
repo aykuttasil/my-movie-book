@@ -51,16 +51,16 @@ class PopularMoviesViewModel @Inject constructor(
         getPopularMoviesByPagination()
     }
 
-    fun getPopularMovies(page: Int) {
+    fun getPopularMovies(pageNumber: Int) {
         _popularTvShowsLiveData.value = DataHolder.Loading()
         viewModelScope.launch {
             try {
-                movieRepository.getPopularMovies(page).run {
+                movieRepository.getPopularMovies(pageNumber).run {
                     _page.currentPage = this.page!!
                     _page.totalPages = this.totalPages!!
 
-                    val pageList = this.results!!
-                    _listMovie.addAll(pageList)
+                    val movieList = this.results!!
+                    _listMovie.addAll(movieList)
 
                     val newList = arrayListOf<Movie>().apply {
                         addAll(_listMovie)
