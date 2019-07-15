@@ -29,6 +29,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.aykuttasil.mymoviebook.BuildConfig
 import com.google.android.material.snackbar.Snackbar
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.*
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -442,3 +446,39 @@ inline fun Application.debug(block: () -> Unit) {
         block()
     }
 }
+
+
+/**
+ * Executes a function using RxJava observable on a separate thread and
+ * exposes it's response as lambda on main thread
+ * REQUIRED: RxJava, RxKotlin, RxAndroid
+ */
+fun <T> asyncRxExecutor(heavyFunction: () -> T, response: (response: T?) -> Unit) {
+    val observable = Single.create<T> { e ->
+        e.onSuccess(heavyFunction())
+    }
+    observable.subscribeOn(Schedulers.newThread())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe { t: T? ->
+            response(t)
+        }
+}
+
+
+/**
+ * Executes a function using Kotlin coroutines on a separate thread pool and
+ * exposes it's response as lambda on main thread.
+ */
+fun <T> asyncCoroutinesExecutor(heavyFunction: () -> T, response: (response: T?) -> Unit) {
+    GlobalScope.launch(Dispatchers.Main) {
+        val data: Deferred<T> = async(Dispatchers.Default) {
+            heavyFunction()
+        }
+        response(data.await())
+    }
+}
+
+/**
+ * Wrapping try/catch to ignore catch block
+ */
+inline fun <T> justTry(block: () -> T) = try { block() } catch (e: Throwable) {}
