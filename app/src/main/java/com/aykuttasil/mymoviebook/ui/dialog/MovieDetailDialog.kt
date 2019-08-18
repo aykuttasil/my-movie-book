@@ -41,13 +41,13 @@ class MovieDetailDialog(val movie: Movie) : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AndroidSupportInjection.inject(this)
-        setStyle(STYLE_NORMAL, R.style.FullScreenDialogStyle)
+        setStyle(STYLE_NORMAL, R.style.AppTheme_FullScreenDialogStyle)
     }
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(
             inflater,
@@ -55,16 +55,14 @@ class MovieDetailDialog(val movie: Movie) : DialogFragment() {
             container,
             false
         )
-        binding.run {
-            lifecycleOwner = this@MovieDetailDialog
-            viewModel = viewModel
-        }
-
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.viewModel = viewModel
+
         viewModel.setMovie(movie)
 
         binding.closeImageview.setOnClickListener {
