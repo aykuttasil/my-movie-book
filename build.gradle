@@ -7,9 +7,10 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0-rc01'
+        classpath 'com.android.tools.build:gradle:3.5.0-rc03'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.androidx.navigation_ktx"
+        classpath 'com.diffplug.spotless:spotless-plugin-gradle:' + versions.spotlessPlugin
     }
 }
 

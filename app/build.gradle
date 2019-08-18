@@ -1,10 +1,9 @@
+apply from: "$project.rootDir/dependencies.gradle"
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
-
-apply from: "$project.rootDir/dependencies.gradle"
 
 android {
     compileSdkVersion buildConfig.compileSdk
@@ -89,3 +88,4 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$versions.androidx.test_ext_junit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.androidx.espresso_core"
 }
+apply from: "$project.rootDir/spotless.gradle"
