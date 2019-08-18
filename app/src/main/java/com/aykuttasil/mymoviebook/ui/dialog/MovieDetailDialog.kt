@@ -45,9 +45,9 @@ class MovieDetailDialog(val movie: Movie) : DialogFragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(
             inflater,
