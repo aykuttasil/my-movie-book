@@ -55,7 +55,8 @@ class MovieDetailDialog(val movie: Movie) : DialogFragment() {
             container,
             false
         )
-        binding.lifecycleOwner = viewLifecycleOwner
+        binding.lifecycleOwner = this
+
         return binding.root
     }
 
