@@ -1,3 +1,18 @@
+/**
+ * Designed and developed by Aykut Asil (@aykuttasil)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.aykuttasil.mymoviebook.di.modules
 
 import com.aykuttasil.mymoviebook.BuildConfig
@@ -14,11 +29,10 @@ import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-
 @Module(includes = [ApiModule::class])
 class NetworkModule {
 
-    //private fun getBaseUrl() = "https://5cb987b0f841d2001455e48e.mockapi.io/api/"
+    // private fun getBaseUrl() = "https://5cb987b0f841d2001455e48e.mockapi.io/api/"
 
     private val baseUrl = "https://api.themoviedb.org/3/"
     private val apiKey = "416f290cfb691748e9a1f4eaff006117"
@@ -39,7 +53,7 @@ class NetworkModule {
     @Provides
     @Singleton
     internal fun provideOkHttpClient(
-        httpLoggingInterceptor: HttpLoggingInterceptor
+      httpLoggingInterceptor: HttpLoggingInterceptor
     ): OkHttpClient {
         val httpClientBuilder = OkHttpClient.Builder()
             .addInterceptor { chain ->
@@ -84,5 +98,4 @@ class NetworkModule {
             .excludeFieldsWithoutExposeAnnotation()
             .create()
     }
-
 }

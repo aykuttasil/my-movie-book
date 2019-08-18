@@ -1,3 +1,18 @@
+/**
+ * Designed and developed by Aykut Asil (@aykuttasil)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.aykuttasil.mymoviebook.util
 
 import android.app.Activity
@@ -14,7 +29,11 @@ import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.TextPaint
 import android.text.style.ClickableSpan
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.ViewTreeObserver
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.RequiresPermission
@@ -32,10 +51,15 @@ import com.google.android.material.snackbar.Snackbar
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 
 /**
  * Extension method to remove the required boilerplate for running code after a view has been
@@ -59,8 +83,8 @@ inline fun <T : View> T.afterMeasured(crossinline f: T.() -> Unit) {
  * Extension method to simplify the code needed to apply spans on a specific sub string.
  */
 inline fun SpannableStringBuilder.withSpan(
-    vararg spans: Any,
-    action: SpannableStringBuilder.() -> Unit
+  vararg spans: Any,
+  action: SpannableStringBuilder.() -> Unit
 ):
         SpannableStringBuilder {
     val from = length
@@ -421,7 +445,6 @@ fun Context.isNetworkStatusAvailable(): Boolean {
     return false
 }
 
-
 inline fun FragmentManager.transaction(func: FragmentTransaction.() -> FragmentTransaction) {
     beginTransaction().func().commit()
 }
@@ -434,7 +457,6 @@ fun AppCompatActivity.addFragment(containerId: Int, fragment: Fragment) {
     supportFragmentManager.transaction { add(containerId, fragment) }
 }
 
-
 inline fun AppCompatActivity.debug(block: () -> Unit) {
     if (BuildConfig.DEBUG) {
         block()
@@ -446,7 +468,6 @@ inline fun Application.debug(block: () -> Unit) {
         block()
     }
 }
-
 
 /**
  * Executes a function using RxJava observable on a separate thread and
@@ -464,7 +485,6 @@ fun <T> asyncRxExecutor(heavyFunction: () -> T, response: (response: T?) -> Unit
         }
 }
 
-
 /**
  * Executes a function using Kotlin coroutines on a separate thread pool and
  * exposes it's response as lambda on main thread.
@@ -481,4 +501,7 @@ fun <T> asyncCoroutinesExecutor(heavyFunction: () -> T, response: (response: T?)
 /**
  * Wrapping try/catch to ignore catch block
  */
-inline fun <T> justTry(block: () -> T) = try { block() } catch (e: Throwable) {}
+inline fun <T> justTry(block: () -> T) = try {
+    block()
+} catch (e: Throwable) {
+}
